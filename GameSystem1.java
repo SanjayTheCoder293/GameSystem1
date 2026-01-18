@@ -3,7 +3,7 @@ import java.io.*;
 
 class Player implements Serializable {
 	String name;
-	int level;
+	transient int level;
 	Player (String name, int level) {
 		this.name = name;
 		this.level = level;
@@ -46,7 +46,7 @@ public class GameSystem1 implements Gamework
 			System.out.println("Game Saved Successfully.");
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream("savegame.txt"));
 			Player savedPlayer = (Player) in.readObject();
-			System.out.println("Loaded Player: " + savedPlayer.level + " at level " + savedPlayer.name);
+			System.out.println("Loaded Player: " + savedPlayer.name + " at level " + savedPlayer.level);
 			in.close();
 		} catch(Exception e) {
 			e.printStackTrace();
